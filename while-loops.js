@@ -71,3 +71,75 @@ For loops: Count the length of items in the array first, and then start executin
 for (let i = 0; i < employees.length; i++) {
     console.log(`Name: ${employees[i].firstName}`);
 }
+
+
+// For of loops:
+/* 
+for...of:
+
+Works on: Iterable objects like arrays, strings, maps, sets, etc.
+Returns: Values of the iterable.
+Example:
+javascript
+Copy code
+let colors = ['red', 'green', 'blue'];
+for (let color of colors) {
+    console.log(color); // Outputs each color
+}
+For Objects?: By default, objects are not iterable with for...of. However, with something like Object.values() or Object.entries(), you can iterate over an object's values or entries using for...of.
+*/
+
+
+// For in loops:
+/* 
+Works on: Objects.
+Returns: Property names (or keys) of the object.
+Example:
+javascript
+Copy code
+let person = {name: 'Alex', age: 25};
+for (let prop in person) {
+    console.log(prop); // Outputs 'name' and then 'age'
+}
+For Arrays?: You can use for...in with arrays, but it's not recommended because it iterates over all enumerable properties, including those in the prototype chain. Also, it doesn't guarantee order.
+*/
+
+// Initializing an array of user profiles
+let userProfiles = [
+    {
+        name: "Alex",
+        age: 25,
+        occupation: "Web Developer",
+        country: "USA"
+    },
+    {
+        name: "Marian",
+        age: 28,
+        occupation: "Graphic Designer",
+        country: "UK"
+    },
+    {
+        name: "Adrian",
+        age: 30,
+        occupation: "Backend Developer",
+        country: "Canada"
+    },
+    {
+        name: "Lucy",
+        age: 29,
+        occupation: "UX Designer",
+        country: "Australia"
+    }
+];
+
+// Iterating over each user profile in the array
+for (let singleProfile of userProfiles) {
+    console.log(`Profile for ${singleProfile.name}:`);
+    for (let currentProperty in singleProfile) {
+        // Ensuring the property is directly from the userProfile and not the prototype chain
+        if (singleProfile.hasOwnProperty(currentProperty)) {
+            console.log(`  ${currentProperty}: ${singleProfile[currentProperty]}`);
+        }
+    }
+    console.log('---------');  // Just to separate each profile for clarity
+}
